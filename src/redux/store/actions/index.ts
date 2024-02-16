@@ -1,17 +1,18 @@
 import {
-  PayloadAction,
-  createAction,
+  // PayloadAction,
+  // createAction,
   createAsyncThunk,
   createSlice,
 } from "@reduxjs/toolkit";
-import { Datum } from "../../interfaces/interfaces";
+// import { Datum } from "../../interfaces/interfaces";
+// import { RootState } from "@reduxjs/toolkit/query";
 
 const baseEndpoint =
   "https://striveschool-api.herokuapp.com/api/deezer/search?q=";
 export const getMusicAction = createAsyncThunk(
   "music/getMusic",
   // + query + "&limit=10"
-  async (query: string, thunkAPI) => {
+  async (query: string) => {
     try {
       const response = await fetch(`${baseEndpoint}${query}`);
       if (response.ok) {
@@ -40,10 +41,10 @@ const musicSlice = createSlice({
     setCurrentTrackPreviewUrl: (state, action) => {
       state.currentTrackPreviewUrl = action.payload;
     },
-    // addToFavourite: (state, action: PayloadAction<string>) => {
+    // addToFavourite: (state, action: PayloadAction<Datum>) => {
     //   state.favourites.push(action.payload);
     // },
-    // removeFromFavourite: (state, action: PayloadAction<string>) => {
+    // removeFromFavourite: (state, action: PayloadAction<number>) => {
     //   state.favourites = state.favourites.filter(
     //     (item) => item !== action.payload
     //   );
@@ -60,5 +61,6 @@ const musicSlice = createSlice({
 });
 
 // export const { addToFavourite, removeFromFavourite } = musicSlice.actions;
+
 export const { setCurrentTrackPreviewUrl } = musicSlice.actions;
 export default musicSlice.reducer;
