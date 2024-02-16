@@ -18,7 +18,7 @@ const AlbumCard: React.FC<AlbumCardProps> = ({ track }) => {
   };
 
   return (
-    <div className="col text-center cards" onClick={handleCardClick}>
+    <div className="col  text-center cards" onClick={handleCardClick}>
       {/* <button onClick={handleToggleFavourite}>
         {isTrackInFavourites()
           ? "Rimuovi dai preferiti"

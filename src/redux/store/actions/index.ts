@@ -17,7 +17,7 @@ export const getMusicAction = createAsyncThunk(
       const response = await fetch(`${baseEndpoint}${query}`);
       if (response.ok) {
         const { data } = await response.json();
-        const limitedResults = data.slice(0, 8);
+        const limitedResults = data.slice(0, 12);
         console.log("prova 2", data);
         return limitedResults;
       } else {

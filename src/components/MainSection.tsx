@@ -27,7 +27,7 @@ const MainSection: React.FC = () => {
         </Col>
       </Row>
       <Row>
-        <Col xs={10}>
+        <Col xs={12} className="mb-5">
           <div id="rock">
             <h2>Searched Music</h2>
             <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3">
