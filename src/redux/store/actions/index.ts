@@ -7,16 +7,16 @@ import {
 import { Datum } from "../../interfaces/interfaces";
 
 const baseEndpoint =
-  "https://striveschool-api.herokuapp.com/api/deezer/search?q=Billie-Eilish&limit=4";
+  "https://striveschool-api.herokuapp.com/api/deezer/search?q=";
 export const getMusicAction = createAsyncThunk(
   "music/getMusic",
   // + query + "&limit=10"
-  async () => {
+  async (query: string, thunkAPI) => {
     try {
-      const response = await fetch(baseEndpoint);
+      const response = await fetch(`${baseEndpoint}${query}`);
       if (response.ok) {
         const { data } = await response.json();
-        const limitedResults = data.slice(0, 4);
+        const limitedResults = data.slice(0, 8);
         console.log("prova 2", data);
         return limitedResults;
       } else {
@@ -34,8 +34,12 @@ const musicSlice = createSlice({
   initialState: {
     music: [],
     favourites: [],
+    currentTrackPreviewUrl: null,
   },
   reducers: {
+    setCurrentTrackPreviewUrl: (state, action) => {
+      state.currentTrackPreviewUrl = action.payload;
+    },
     // addToFavourite: (state, action: PayloadAction<string>) => {
     //   state.favourites.push(action.payload);
     // },
@@ -56,5 +60,5 @@ const musicSlice = createSlice({
 });
 
 // export const { addToFavourite, removeFromFavourite } = musicSlice.actions;
-
+export const { setCurrentTrackPreviewUrl } = musicSlice.actions;
 export default musicSlice.reducer;

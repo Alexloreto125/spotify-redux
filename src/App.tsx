@@ -21,14 +21,4 @@ const App = () => {
   );
 };
 
-// export const uno= async ()=> {
-//   const dispatch = useAppDispatch();
-//   const music = useAppSelector((state) => state.music);
-// await useEffect(()=> {
-//   dispatch(getMusicAction());
-// },[])
-// return(
-
-// )
-// }
 export default App;
